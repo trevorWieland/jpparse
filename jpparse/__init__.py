@@ -1,0 +1,1 @@
+"""Kanji, Vocab, and Grammar parsing library for Japanese text."""
