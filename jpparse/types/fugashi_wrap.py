@@ -79,6 +79,12 @@ class UnidicPos3(UnidicField, str, Enum):
     ordinary = "一般"
     place_name = "地名"
     person_name = "人名"
+    counter_suffix = "助数詞"
+    potential_counter_suffix = "助数詞可能"
+    potential_na_adjective = "形状詞可能"
+    potential_adverb = "副詞可能"
+    sa_conversion = "サ変可能"
+    sa_na_conversion = "サ変形状詞可能"
     other = "その他"
 
 class UnidicPos4(UnidicField, str, Enum):
@@ -102,6 +108,7 @@ class UnidicCType(UnidicField, str, Enum):
     ichidan_higher_za = "上一段-ザ行"
     ichidan_higher_ta = "上一段-タ行"
     ichidan_higher_na = "上一段-ナ行"
+    ichidan_higher_ha = "上一段-ハ行"
     ichidan_higher_ba = "上一段-バ行"
     ichidan_higher_ma = "上一段-マ行"
     ichidan_higher_ra = "上一段-ラ行"
@@ -110,9 +117,11 @@ class UnidicCType(UnidicField, str, Enum):
     ichidan_lower_ka = "下一段-カ行"
     ichidan_lower_ga = "下一段-ガ行"
     ichidan_lower_sa = "下一段-サ行"
+    ichidan_lower_za = "下一段-ザ行"
     ichidan_lower_ta = "下一段-タ行"
     ichidan_lower_da = "下一段-ダ行"
     ichidan_lower_na = "下一段-ナ行"
+    ichidan_lower_ha = "下一段-ハ行"
     ichidan_lower_ba = "下一段-バ行"
     ichidan_lower_ma = "下一段-マ行"
     ichidan_lower_ra = "下一段-ラ行"
@@ -131,6 +140,7 @@ class UnidicCType(UnidicField, str, Enum):
     auxiliary_ta = "助動詞-タ"
     auxiliary_tai = "助動詞-タイ"
     auxiliary_da = "助動詞-ダ"
+    auxiliary_dosu = "助動詞-ドス"
     auxiliary_desu = "助動詞-デス"
     auxiliary_nai = "助動詞-ナイ"
     auxiliary_nanda = "助動詞-ナンダ"
@@ -140,6 +150,7 @@ class UnidicCType(UnidicField, str, Enum):
     auxiliary_ya = "助動詞-ヤ"
     auxiliary_rashii = "助動詞-ラシイ"
     auxiliary_rare = "助動詞-レル"
+    auxiliary_hin = "助動詞-ヒン"
 
     i_adjective = "形容詞"
 
@@ -159,6 +170,8 @@ class UnidicCType(UnidicField, str, Enum):
     text_auxiliary_ri = "文語助動詞-リ"
 
     text_yondan_ha = "文語四段-ハ行"
+    text_yondan_sa = "文語四段-サ行"
+    text_yondan_ra = "文語四段-ラ行"
 
     text_i_adjective_ku = "文語形容詞-ク"
     text_i_adjective_shiku = "文語形容詞-シク"
@@ -168,6 +181,42 @@ class UnidicCType(UnidicField, str, Enum):
 class UnidicCForm(UnidicField, str, Enum):
     """Enum for the conjugation form in Unidic."""
 
+    conditional_general = "仮定形-一般"
+    conditional_fusion = "仮定形-融合"
+
+    realis_general = "已然形-一般"
+
+    imperative = "命令形"
+    
+    volitional_nominal = "意志推量形"
+
+    imperfective_sa = "未然形-サ"
+    imperfective_se = "未然形-セ"
+    imperfective_general = "未然形-一般"
+    imperfective_nasal_n = "未然形-撥音便"
+    imperfective_auxiliary = "未然形-補助"
+
+    conclusive_general = "終止形-一般"
+    conclusive_nasal_t = "終止形-促音便"
+    conclusive_nasal_n = "終止形-撥音便"
+    conclusive_fusion = "終止形-融合"
+
+    stem_sa = "語幹-サ"
+    stem_general = "語幹-一般"
+
+    attributive_general = "連体形-一般"
+    attributive_nasal_n = "連体形-撥音便"
+    attributive_omission = "連体形-省略"
+    attributive_auxiliary = "連体形-補助"
+
+    continuative_i = "連用形-イ音便"
+    continuative_u = "連用形-ウ音便"
+    continuative_ni = "連用形-ニ"
+    continuative_general = "連用形-一般"
+    continuative_nasal_n = "連用形-撥音便"
+    continuative_nasal_t = "連用形-促音便"
+    continuative_omit = "連用形-省略"
+    continuative_fusion = "連用形-融合"
 
     other = "その他"
 

@@ -36,7 +36,6 @@ class ScriptParser:
         word_features = UnidicFeatures29.from_fugashi(fugashi_word.feature, analysis_dict=self.analysis_dict)
 
         if word_features is None:
-            print(f"Encountered unparsable word: {fugashi_word.surface}")
             return None
 
         return None
