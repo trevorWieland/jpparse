@@ -1,0 +1,13 @@
+{
+    "version": "1.0.0",
+    "scripts": [
+        {
+            "name": "leyline1",
+            "clean_name": "A Clockwork Ley-Line",
+            "jp_name": "時計仕掛けのレイライン",
+            "category": "visual_novel",
+            "vndb_id": 10016,
+            "vndb_release_id": null
+        }
+    ]
+}
