@@ -2,28 +2,53 @@
     "version": "1.0.0",
     "scripts": [
         {
+            "name": "aete mushisuru",
+            "clean_name": "Aete Mushi Suru Kimi to no Mirai",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 10803,
+            "vndb_release_id": null
+        },
+        {
+            "name":"amakoi",
+            "clean_name":"Ama Koi Syrups",
+            "jp_name":"",
+            "category":"visual_novel",
+            "vndb_id": 16201,
+            "vndb_release_id": null
+        },
+        {
+            "name":"ao no kanata",
+            "clean_name":"Ao no Kanata no Four Rhythm",
+            "jp_name":"",
+            "category":"visual_novel",
+            "vndb_id": 12849,
+            "vndb_release_id": null
+        },
+        {
             "name": "leyline1",
             "clean_name": "A Clockwork Ley-Line",
-            "jp_name": "時計仕掛けのレイライン",
+            "jp_name": "",
             "category": "visual_novel",
             "vndb_id": 10016,
             "vndb_release_id": null
         },
         {
             "name": "leyline2",
-            "clean_name": "A Clockwork Ley-Line 2",
-            "jp_name": "時計仕掛けのレイライン 2",
+            "clean_name": "A Clockwork Ley-Line -Daybreak of Remnants Shadows-",
+            "jp_name": "",
             "category": "visual_novel",
             "vndb_id": 11093,
             "vndb_release_id": null
         },
         {
             "name": "leyline3",
-            "clean_name": "A Clockwork Ley-Line 3",
-            "jp_name": "時計仕掛けのレイライン 3",
+            "clean_name": "A Clockwork Ley-Line -Flowers Falling in the Morning Mist-",
+            "jp_name": "",
             "category": "visual_novel",
             "vndb_id": 16212,
             "vndb_release_id": null
         }
+        
     ]
 }
