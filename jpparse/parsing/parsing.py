@@ -1,8 +1,10 @@
 """Main script for parsing functionality, including fugashi to parse text."""
 
+import numpy as np
 from fugashi import Tagger
+from numpy.typing import NDArray
 
-from ..types import ParsedScript, RawScript, ScriptLine, ScriptMetadata, UnidicFeatures29, Vocab, VocabType
+from ..types import ParsedScript, RawScript, ScriptLine, ScriptMetadata, UnidicFeatures29
 
 
 class ScriptParser:
@@ -23,31 +25,23 @@ class ScriptParser:
 
         self.analysis_dict: dict[str, set[str]] | None = None if not analysis_mode else {}
 
-    def parse_word(self, fugashi_word) -> Vocab | None:
-        """Parse a fugashi word into a Vocab object.
+    def parse_word(self, fugashi_word) -> NDArray | None:
+        """Attempt to parse a fugashi word into matrix form.
 
         Args:
             fugashi_word: The fugashi word to parse.
 
         Returns:
-            Vocab: The parsed Vocab object.
+            NDArray: The parsed word in matrix form.
         """
         word_features = UnidicFeatures29.from_fugashi(fugashi_word.feature, analysis_dict=self.analysis_dict)
 
         if word_features is None:
             return None
 
-        vocab = Vocab(
-            word=word_features.orth,
-            reading=word_features.kana,
-            data=None,
-            type=VocabType.from_fugashi(word_features),
-            verb_forms=None,
-            component_kanji=[],
-            component_vocab=[],
-        )
+        matrix = word_features.to_onehot()
 
-        return vocab
+        return matrix
 
     def parse_line(self, line: str) -> ScriptLine:
         """Parse a single line into a ScriptLine object.
@@ -60,10 +54,19 @@ class ScriptParser:
         """
         words = self.tagger(line)
 
-        vocab_breakdown = [self.parse_word(fugashi_word) for fugashi_word in words]
-        vocab_breakdown = [vocab for vocab in vocab_breakdown if vocab is not None]
+        grammar_slices = [self.parse_word(fugashi_word) for fugashi_word in words]
+        grammar_slices = [grammar_slice for grammar_slice in grammar_slices if grammar_slice is not None]
 
-        return ScriptLine(text=line, vocab_breakdown=vocab_breakdown)
+        grammar_sum: NDArray = sum(grammar_slices)
+
+        if len(grammar_slices) == 0:
+            grammar_fingerprint = np.zeros((8, 81), dtype=np.float16)
+        elif len(grammar_slices) == 1:
+            grammar_fingerprint = grammar_slices[0]
+        else:
+            grammar_fingerprint = grammar_sum / len(grammar_slices)
+
+        return ScriptLine(text=line, grammar_fingerprint=grammar_fingerprint.astype(np.float16))
 
     def parse(self) -> ParsedScript:
         """Parse the entire script into a list of ScriptLine objects.
@@ -77,6 +80,7 @@ class ScriptParser:
         self.parsed_script = ParsedScript(
             metadata=self.metadata,
             lines=[self.parse_line(line) for line in self.raw_lines],
+            fingerprint_version="0.1"
         )
 
         return self.parsed_script

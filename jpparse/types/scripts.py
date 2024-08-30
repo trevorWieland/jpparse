@@ -4,8 +4,6 @@ from enum import Enum
 
 from pydantic import BaseModel, Field
 
-from .text import Vocab
-
 
 class ScriptCategory(str, Enum):
     """The category of a script."""
@@ -97,8 +95,17 @@ class ScriptLine(BaseModel):
 
     text: str = Field(..., description="The text of the line.")
 
+    grammar_fingerprint: list[list[float]] = Field(
+        ...,
+        description="The fingerprint of the grammar in the line. Each value is the proportion of words in the line that have a specific grammar feature.",
+
+    )
+
     # TODO: Add kanji, vocab, and grammar fields / difficulty metrics
-    vocab_breakdown: list[Vocab] = Field(..., description="The best-guess vocab breakdown of the line.")
+
+    class Config:
+        """Pydantic config for ScriptLine."""
+        arbitrary_types_allowed = True
 
 
 class ParsedScript(BaseModel):
@@ -119,5 +126,10 @@ class ParsedScript(BaseModel):
         ],
     )
     lines: list[ScriptLine] = Field(..., description="The parsed lines of the script.")
+    fingerprint_version: str = Field(
+        ...,
+        description="The version of the fingerprinting algorithm used to generate the grammar fingerprints.",
+        examples=["1.0.0"],
+    )
 
     # TODO: Add cumulative kanji, vocab, and grammar fields / difficulty metrics

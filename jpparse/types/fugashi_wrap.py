@@ -3,18 +3,30 @@
 from enum import Enum
 from typing import Any, Optional
 
+import numpy as np
+from numpy.typing import NDArray
 from pydantic import BaseModel, Field, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, ValidationError, core_schema
 
 
-class UnidicField:
+class UnidicField(str):
     """Parent class for Unidic fields."""
 
     @classmethod
-    def from_fugashi(cls, field: str, analysis_mode: bool = False) -> tuple[Optional["UnidicField"], Optional[str]]:
-        """Convert a fugashi field to a UnidicField object."""
+    def from_fugashi(cls, field: str | None, analysis_mode: bool = False) -> tuple[Optional["UnidicField"], Optional[str]]:
+        """Convert a fugashi field to a UnidicField object.
+
+        Args:
+            field (str): The fugashi field to convert.
+            analysis_mode (bool, optional): Whether to return the field as a string if it cannot be converted. Defaults to False.
+
+        Returns:
+            tuple[Optional["UnidicField"], Optional[str]]: The converted UnidicField object and the field if it could not be converted and analysis_mode was set.
+        """
         try:
             if field == "*":
+                return None, None
+            if field is None:
                 return None, None
             return cls(field), None
         except ValueError as e:
@@ -23,8 +35,43 @@ class UnidicField:
             else:
                 raise ValueError(f"Invalid value for {cls.__name__}: {field}") from e
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable.
 
-class UnidicPos1(UnidicField, str, Enum):
+        Returns:
+            bool: Whether the field is one-hot encodeable.
+        """
+        raise NotImplementedError
+
+    @classmethod
+    def get_onehot_order(cls) -> list[str] | None:
+        """Get the order of the one-hot encoding for the field, or None if the field is not one-hot encodeable.
+
+        Returns:
+            list[str] | None: The order of the one-hot encoding for the field, or None if the field is not one-hot encodeable.
+        """
+        raise NotImplementedError
+
+    def to_onehot(self) -> NDArray[np.int8]:
+        """Convert the field to a one-hot encoded numpy array.
+
+        Returns:
+            NDArray[np.int8]: The one-hot encoded numpy array
+
+        Raises:
+            RuntimeError: If the field is not one-hot encodeable.
+        """
+        if self.is_onehot_encodeable():
+            onehot = np.zeros(len(self.get_onehot_order()), dtype=np.int8)
+            onehot[self.get_onehot_order().index(self.value)] = 1
+            return onehot
+        else:
+            raise RuntimeError(f"{self.__class__.__name__} is not one-hot encodeable.")
+
+
+
+class UnidicPos1(UnidicField, Enum):
     """Enum for the first part of speech in Unidic."""
 
     noun = "名詞"
@@ -45,8 +92,26 @@ class UnidicPos1(UnidicField, str, Enum):
     prenoun_adj = "連体詞"
     other = "その他"
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable.
 
-class UnidicPos2(UnidicField, str, Enum):
+        Returns:
+            bool: Whether the field is one-hot encodeable.
+        """
+        return True
+
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field.
+
+        Returns:
+            list[str]: The order of the one-hot encoding for the field.
+        """
+        return sorted(list(set(cls.__members__.values())))
+
+
+class UnidicPos2(UnidicField, Enum):
     """Enum for the second part of speech in Unidic."""
 
     common_noun = "普通名詞"
@@ -75,8 +140,18 @@ class UnidicPos2(UnidicField, str, Enum):
     error = "ＡＡ"  # No idea what caused this, but it appeared once
     other = "その他"
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return True
 
-class UnidicPos3(UnidicField, str, Enum):
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field."""
+        return sorted(list(set(cls.__members__.values())))
+
+
+class UnidicPos3(UnidicField, Enum):
     """Enum for the third part of speech in Unidic."""
 
     ordinary = "一般"
@@ -91,8 +166,30 @@ class UnidicPos3(UnidicField, str, Enum):
     emoticon = "顔文字"
     other = "その他"
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return True
 
-class UnidicPos4(UnidicField, str, Enum):
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field."""
+        return [
+            cls.ordinary,
+            cls.place_name,
+            cls.person_name,
+            cls.counter_suffix,
+            cls.potential_counter_suffix,
+            cls.potential_na_adjective,
+            cls.potential_adverb,
+            cls.sa_conversion,
+            cls.sa_na_conversion,
+            cls.emoticon,
+            cls.other,
+        ]
+
+
+class UnidicPos4(UnidicField, Enum):
     """Enum for the fourth part of speech in Unidic."""
 
     country_name = "国"
@@ -101,8 +198,24 @@ class UnidicPos4(UnidicField, str, Enum):
     ordinary = "一般"
     other = "その他"
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return True
 
-class UnidicCType(UnidicField, str, Enum):
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field."""
+        return [
+            cls.country_name,
+            cls.first_name,
+            cls.family_name,
+            cls.ordinary,
+            cls.other,
+        ]
+
+
+class UnidicCType(UnidicField, Enum):
     """Enum for the conjugation type in Unidic."""
 
     irregular_ka = "カ行変格"
@@ -306,8 +419,18 @@ class UnidicCType(UnidicField, str, Enum):
             self.text_yondan_ma,
         ]
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return True
 
-class UnidicCForm(UnidicField, str, Enum):
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field."""
+        return sorted(list(set(cls.__members__.values())))
+
+
+class UnidicCForm(UnidicField, Enum):
     """Enum for the conjugation form in Unidic."""
 
     conditional_general = "仮定形-一般"
@@ -356,8 +479,18 @@ class UnidicCForm(UnidicField, str, Enum):
 
     other = "その他"
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return True
 
-class UnidicGoshu(UnidicField, str, Enum):
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field."""
+        return sorted(list(set(cls.__members__.values())))
+
+
+class UnidicGoshu(UnidicField, Enum):
     """Enum for the goshu field in Unidic."""
 
     japan = "和"  # Japanese origin word
@@ -369,8 +502,18 @@ class UnidicGoshu(UnidicField, str, Enum):
     unknown = "不明"  # Unknown origin word
     other = "その他"
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return True
 
-class UnidicType(UnidicField, str, Enum):
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field."""
+        return sorted(list(set(cls.__members__.values())))
+
+
+class UnidicType(UnidicField, Enum):
     """Enum for the type field in Unidic."""
 
     human_counter = "体"  # Not sure what this means
@@ -399,14 +542,34 @@ class UnidicType(UnidicField, str, Enum):
     aspect = "相"  # Aspect
     other = "他"
 
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return True
 
-class UnidicGeneralString(UnidicField, str):
+    @classmethod
+    def get_onehot_order(cls) -> list[str]:
+        """Get the order of the one-hot encoding for the field."""
+        return sorted(list(set(cls.__members__.values())))
+
+
+class UnidicGeneralString(UnidicField):
     """General string field for Unidic."""
 
     @classmethod
     def __get_pydantic_core_schema__(cls, source_type: Any, handler: GetCoreSchemaHandler) -> CoreSchema:
         """Validate the field as a general string."""
         return core_schema.no_info_after_validator_function(cls, handler(str))
+
+    @classmethod
+    def is_onehot_encodeable(cls) -> bool:
+        """Check if the field is one-hot encodeable."""
+        return False
+
+    @classmethod
+    def get_onehot_order(cls) -> None:
+        """Get the order of the one-hot encoding for the field."""
+        return None
 
 
 class UnidicFeatures29(BaseModel):
@@ -518,35 +681,35 @@ class UnidicFeatures29(BaseModel):
         """
         if analysis_dict is None:
             return cls(
-                pos1=UnidicPos1.from_fugashi(feature.pos1),
-                pos2=UnidicPos2.from_fugashi(feature.pos2),
-                pos3=UnidicPos3.from_fugashi(feature.pos3),
-                pos4=UnidicPos4.from_fugashi(feature.pos4),
-                cType=UnidicCType.from_fugashi(feature.cType),
-                cForm=UnidicCForm.from_fugashi(feature.cForm),
-                lForm=feature.lForm,
-                lemma=feature.lemma,
-                orth=feature.orth,
-                pron=feature.pron,
-                orthBase=feature.orthBase,
-                pronBase=feature.pronBase,
-                goshu=UnidicGoshu.from_fugashi(feature.goshu),
-                iType=UnidicGeneralString.from_fugashi(feature.iType),
-                iForm=UnidicGeneralString.from_fugashi(feature.iForm),
-                fType=UnidicGeneralString.from_fugashi(feature.fType),
-                fForm=UnidicGeneralString.from_fugashi(feature.fForm),
-                iConType=UnidicGeneralString.from_fugashi(feature.iConType),
-                fConType=UnidicGeneralString.from_fugashi(feature.fConType),
-                type=UnidicType.from_fugashi(feature.type),
-                kana=feature.kana,
-                kanaBase=feature.kanaBase,
-                form=feature.form,
-                formBase=feature.formBase,
-                aType=feature.aType,
-                aConType=feature.aConType,
-                aModType=UnidicGeneralString.from_fugashi(feature.aModType),
-                lid=feature.lid,
-                lemma_id=feature.lemma_id,
+                pos1=UnidicPos1.from_fugashi(feature.pos1)[0],
+                pos2=UnidicPos2.from_fugashi(feature.pos2)[0],
+                pos3=UnidicPos3.from_fugashi(feature.pos3)[0],
+                pos4=UnidicPos4.from_fugashi(feature.pos4)[0],
+                cType=UnidicCType.from_fugashi(feature.cType)[0],
+                cForm=UnidicCForm.from_fugashi(feature.cForm)[0],
+                lForm=feature.lForm if feature.lForm is not None else "",
+                lemma=feature.lemma if feature.lemma is not None else "",
+                orth=feature.orth if feature.orth is not None else "",
+                pron=feature.pron if feature.pron is not None else "",
+                orthBase=feature.orthBase if feature.orthBase is not None else "",
+                pronBase=feature.pronBase if feature.pronBase is not None else "",
+                goshu=UnidicGoshu.from_fugashi(feature.goshu)[0],
+                iType=UnidicGeneralString.from_fugashi(feature.iType)[0],
+                iForm=UnidicGeneralString.from_fugashi(feature.iForm)[0],
+                fType=UnidicGeneralString.from_fugashi(feature.fType)[0],
+                fForm=UnidicGeneralString.from_fugashi(feature.fForm)[0],
+                iConType=UnidicGeneralString.from_fugashi(feature.iConType)[0],
+                fConType=UnidicGeneralString.from_fugashi(feature.fConType)[0],
+                type=UnidicType.from_fugashi(feature.type)[0],
+                kana=feature.kana if feature.kana is not None else "",
+                kanaBase=feature.kanaBase if feature.kanaBase is not None else "",
+                form=feature.form if feature.form is not None else "",
+                formBase=feature.formBase if feature.formBase is not None else "",
+                aType=feature.aType if feature.aType is not None else "",
+                aConType=feature.aConType if feature.aConType is not None else "",
+                aModType=UnidicGeneralString.from_fugashi(feature.aModType)[0],
+                lid=feature.lid if feature.lid is not None else 0,
+                lemma_id=feature.lemma_id if feature.lemma_id is not None else 0,
             )
         else:
             cls_dict = {}
@@ -614,3 +777,70 @@ class UnidicFeatures29(BaseModel):
                 return cls(**cls_dict)
             except ValidationError:
                 return None
+
+    def to_onehot(self) -> NDArray[np.int8]:
+        """Convert the object to a one-hot encoded matrix.
+
+        Pads the one-hot encoding with zeros to ensure that all fields are the same length.
+        The shape of this matrix is (n_fields, max_field_length).
+        If a given field is None, all values in that row will be set to 0.
+
+        Returns:
+            NDArray[np.int8]: The one-hot encoded array.
+        """
+        onehot = []
+        max_length = 0
+
+        if self.pos1 is not None:
+            onehot.append(self.pos1.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicPos1.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicPos1.get_onehot_order()))
+
+        if self.pos2 is not None:
+            onehot.append(self.pos2.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicPos2.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicPos2.get_onehot_order()))
+
+        if self.pos3 is not None:
+            onehot.append(self.pos3.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicPos3.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicPos3.get_onehot_order()))
+
+        if self.pos4 is not None:
+            onehot.append(self.pos4.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicPos4.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicPos4.get_onehot_order()))
+
+        if self.cType is not None:
+            onehot.append(self.cType.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicCType.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicCType.get_onehot_order()))
+
+        if self.cForm is not None:
+            onehot.append(self.cForm.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicCForm.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicCForm.get_onehot_order()))
+
+        if self.goshu is not None:
+            onehot.append(self.goshu.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicGoshu.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicGoshu.get_onehot_order()))
+
+        if self.type is not None:
+            onehot.append(self.type.to_onehot())
+        else:
+            onehot.append(np.zeros(len(UnidicType.get_onehot_order()), dtype=np.int8))
+        max_length = max(max_length, len(UnidicType.get_onehot_order()))
+
+        # Pad all one-hot encodings to the same length
+        for i in range(len(onehot)):
+            onehot[i] = np.pad(onehot[i], (0, max_length - len(onehot[i])), "constant")
+
+        return np.vstack(onehot)
