@@ -8,12 +8,9 @@ from jpparse.types import ScriptIndex
 with open("data/index.json", "r", encoding="utf-8") as f:
     index = ScriptIndex.model_validate_json(f.read())
 
-target_vns = ["leyline1", "leyline2", "leyline3"]
-
 analysis_dict = {}
-for target_vn in target_vns:
-    print(f"Processing {target_vn}...")
-    metadata = next(script for script in index.scripts if script.name == target_vn)
+for metadata in index.scripts[:1]:
+    print(f"Processing {metadata.name}...")
 
     parser = ScriptParser.from_metadata(metadata, "data/scripts", analysis_mode=True)
 
@@ -22,9 +19,12 @@ for target_vn in target_vns:
 
     parsed_script = parser.parse()
 
+    with open(f"data/parsed/{metadata.name}.json", "w", encoding="utf-8") as f:
+        f.write(parsed_script.model_dump_json(indent=4))
+
     analysis_dict = parser.analysis_dict
 
-analysis_dict = {k: sorted(list(v)) for k,v in analysis_dict.items()}
+analysis_dict = {k: sorted(list(v)) for k, v in analysis_dict.items()}
 
 with open("analysis.json", "w", encoding="utf-8") as f:
     json.dump(analysis_dict, f, indent=4)

@@ -10,19 +10,523 @@
             "vndb_release_id": null
         },
         {
-            "name":"amakoi",
-            "clean_name":"Ama Koi Syrups",
-            "jp_name":"",
-            "category":"visual_novel",
+            "name": "amakoi",
+            "clean_name": "Ama Koi Syrups",
+            "jp_name": "",
+            "category": "visual_novel",
             "vndb_id": 16201,
             "vndb_release_id": null
         },
         {
-            "name":"ao no kanata",
-            "clean_name":"Ao no Kanata no Four Rhythm",
-            "jp_name":"",
-            "category":"visual_novel",
+            "name": "ao no kanata",
+            "clean_name": "Ao no Kanata no Four Rhythm",
+            "jp_name": "",
+            "category": "visual_novel",
             "vndb_id": 12849,
+            "vndb_release_id": null
+        },
+        {
+            "name": "astelight shuushuubako",
+            "clean_name": "Astelight Shuushuubako",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 10678,
+            "vndb_release_id": null
+        },
+        {
+            "name": "axanael",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "biman1",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "buraban",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "chronobox trials",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "chronobox",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "clacra",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "cloverpoint",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "corona_1",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "corona_2",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "corona_3",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "daitoshokan fandisk",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "daitoshokan",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "datealive",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "dies irae",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "dracuriot",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "eustia",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "fate stay night",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "flowers1",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "flowers2",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "flowers3",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "flyable heart",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "fortissimoexs",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "fortunearterial",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "fureraba",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "futsuu no fantasy",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "gensou no idea",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaia",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_1",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_2",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_3",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_4",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_5",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_5_5",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_6",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "grisaiaphantomtrigger_7",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "hanachirasu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "hanahira",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "harumade kururu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "hatsukoi yohou",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "hatsuyuki sakura",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "hellolady",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "henkoi",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "hoshimemo",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "iinchou shounin",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "imakoi",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "inganock",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "itsusora",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "jikaijikake no eve",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "jingai makyou",
+            "clean_name": "Jingai Makyou",
+            "jp_name": "塵骸魔京",
+            "category": "visual_novel",
+            "vndb_id": 400,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kagerou",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kajiri 18",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kajiri akebono",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kajiri",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kamikaze explorer",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kamimaho",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kanojo no seiiki",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "katahane",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kaziklu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kimikoe",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "kirakira",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "koichoco",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "koikenotome",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
             "vndb_release_id": null
         },
         {
@@ -48,7 +552,542 @@
             "category": "visual_novel",
             "vndb_id": 16212,
             "vndb_release_id": null
+        },
+        {
+            "name": "localove",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "magical charming",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "maitetsu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "majokoi",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "mamiyakun-chi",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "marshmallow",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "momoiro",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "monobeno",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "muramasa",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "nanarin",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "nanatsuiro",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "natsukumo yururu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "nine kokoiro",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "nine9",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "nobleworks",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "noratoto",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "nursery rhyme",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "oniikiss fd",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "oniikiss",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "oppaiacademy",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "oretsuba afterstory",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "oretsuba prelude",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "oretsuba",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "ouka sabaki",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "parfait",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "prawfclwyd",
+            "clean_name": "Prawf Clwyd",
+            "jp_name": "プラゥヴ クルイード",
+            "category": "visual_novel",
+            "vndb_id": 782,
+            "vndb_release_id": null
+        },
+        {
+            "name": "primalhearts_1",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "primalhearts_2",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "primary by skyfish",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "princessfrontier",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "rabuobu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "raisewolf",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "rewrite+",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "riddlejoker",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "rinshin",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "sabbatwitch",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "satsukoi",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "sengoku koihime x",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "senmomo",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "senrenbanka",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "sensinkan bansenzin",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "sensinkan hatimyouzin",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "sharnoth fvr",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "shin koihime eiyuutan 1",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "shin koihime eiyuutan 2",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "shin koihime eiyuutan 3",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "shin koihime eiyuutan plus",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "shirokuma",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "shugaten",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "silverio vendetta",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "simulacre",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "snowwhite",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "soramitsu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "sourire",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "subahibi",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "sukinara",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "summer pockets",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "tarareba",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "trinoline",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "tsujidou-san no jun_ai road",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "tsujidou-san no virgin road",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "tsuriotsu",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "tsuushinbo",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "twinklecrusaders",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "wagamama",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "white_album",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
+        },
+        {
+            "name": "yoakena",
+            "clean_name": "",
+            "jp_name": "",
+            "category": "visual_novel",
+            "vndb_id": 0,
+            "vndb_release_id": null
         }
-        
     ]
 }

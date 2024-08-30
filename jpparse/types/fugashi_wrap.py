@@ -45,6 +45,7 @@ class UnidicPos1(UnidicField, str, Enum):
     prenoun_adj = "連体詞"
     other = "その他"
 
+
 class UnidicPos2(UnidicField, str, Enum):
     """Enum for the second part of speech in Unidic."""
 
@@ -71,7 +72,9 @@ class UnidicPos2(UnidicField, str, Enum):
     i_adjectival = "形容詞的"
     na_adjectival = "形状詞的"
     whole_phrase_particle = "準体助詞"
+    error = "ＡＡ"  # No idea what caused this, but it appeared once
     other = "その他"
+
 
 class UnidicPos3(UnidicField, str, Enum):
     """Enum for the third part of speech in Unidic."""
@@ -85,7 +88,9 @@ class UnidicPos3(UnidicField, str, Enum):
     potential_adverb = "副詞可能"
     sa_conversion = "サ変可能"
     sa_na_conversion = "サ変形状詞可能"
+    emoticon = "顔文字"
     other = "その他"
+
 
 class UnidicPos4(UnidicField, str, Enum):
     """Enum for the fourth part of speech in Unidic."""
@@ -95,6 +100,7 @@ class UnidicPos4(UnidicField, str, Enum):
     family_name = "姓"
     ordinary = "一般"
     other = "その他"
+
 
 class UnidicCType(UnidicField, str, Enum):
     """Enum for the conjugation type in Unidic."""
@@ -151,13 +157,19 @@ class UnidicCType(UnidicField, str, Enum):
     auxiliary_rashii = "助動詞-ラシイ"
     auxiliary_rare = "助動詞-レル"
     auxiliary_hin = "助動詞-ヒン"
+    auxiliary_hen = "助動詞-ヘン"
+    auxiliary_yan = "助動詞-ヤン"
+    auxiliary_nsu = "助動詞-ンス"
 
     i_adjective = "形容詞"
 
     text_irregular_sa = "文語サ行変格"
     text_irregular_ra = "文語ラ行変格"
 
-    text_ichidan_double_lower_ra = "文語下二段-ラ行"
+    text_nidan_lower_ra = "文語下二段-ラ行"
+    text_nidan_lower_a = "文語下二段-ア行"
+    text_nidan_lower_sa = "文語下二段-サ行"
+    text_nidan_lower_da = "文語下二段-ダ行"
 
     text_auxiliary_ki = "文語助動詞-キ"
     text_auxiliary_gotoshi = "文語助動詞-ゴトシ"
@@ -168,15 +180,132 @@ class UnidicCType(UnidicField, str, Enum):
     text_auxiliary_beshi = "文語助動詞-ベシ"
     text_auxiliary_mu = "文語助動詞-ム"
     text_auxiliary_ri = "文語助動詞-リ"
+    text_auxiliary_keri = "文語助動詞-ケリ"
+    text_auxiliary_maji = "文語助動詞-マジ"
 
     text_yondan_ha = "文語四段-ハ行"
     text_yondan_sa = "文語四段-サ行"
     text_yondan_ra = "文語四段-ラ行"
+    text_yondan_ka = "文語四段-カ行"
+    text_yondan_ta = "文語四段-タ行"
+    text_yondan_ba = "文語四段-バ行"
+    text_yondan_ma = "文語四段-マ行"
 
     text_i_adjective_ku = "文語形容詞-ク"
     text_i_adjective_shiku = "文語形容詞-シク"
 
+    unchanging_type = "無変化型"
+    special_type = "特殊型"
+
     other = "その他"
+
+    def is_godan(self) -> bool:
+        """Check if the conjugation type is a godan verb."""
+        return self in [
+            self.godan_ka,
+            self.godan_ga,
+            self.godan_sa,
+            self.godan_ta,
+            self.godan_na,
+            self.godan_ba,
+            self.godan_ma,
+            self.godan_ra,
+            self.godan_wa,
+        ]
+
+    def is_ichidan(self) -> bool:
+        """Check if the conjugation type is an ichidan verb."""
+        return self in [
+            self.ichidan_higher_a,
+            self.ichidan_higher_ka,
+            self.ichidan_higher_ga,
+            self.ichidan_higher_za,
+            self.ichidan_higher_ta,
+            self.ichidan_higher_na,
+            self.ichidan_higher_ha,
+            self.ichidan_higher_ba,
+            self.ichidan_higher_ma,
+            self.ichidan_higher_ra,
+            self.ichidan_lower_a,
+            self.ichidan_lower_ka,
+            self.ichidan_lower_ga,
+            self.ichidan_lower_sa,
+            self.ichidan_lower_za,
+            self.ichidan_lower_ta,
+            self.ichidan_lower_da,
+            self.ichidan_lower_na,
+            self.ichidan_lower_ha,
+            self.ichidan_lower_ba,
+            self.ichidan_lower_ma,
+            self.ichidan_lower_ra,
+        ]
+
+    def is_irregular(self) -> bool:
+        """Check if the conjugation type is an irregular verb."""
+        return self in [
+            self.irregular_ka,
+            self.irregular_sa,
+            self.unchanging_type,
+            self.special_type,
+            self.text_irregular_sa,
+            self.text_irregular_ra,
+        ]
+
+    def is_auxiliary(self) -> bool:
+        """Check if the conjugation type is an auxiliary verb."""
+        return self in [
+            self.auxiliary_ja,
+            self.auxiliary_ta,
+            self.auxiliary_tai,
+            self.auxiliary_da,
+            self.auxiliary_dosu,
+            self.auxiliary_desu,
+            self.auxiliary_nai,
+            self.auxiliary_nanda,
+            self.auxiliary_nu,
+            self.auxiliary_mai,
+            self.auxiliary_masu,
+            self.auxiliary_ya,
+            self.auxiliary_rashii,
+            self.auxiliary_rare,
+            self.auxiliary_hin,
+            self.auxiliary_hen,
+            self.auxiliary_yan,
+            self.auxiliary_nsu,
+            self.text_auxiliary_ki,
+            self.text_auxiliary_gotoshi,
+            self.text_auxiliary_zu,
+            self.text_auxiliary_tari_complete,
+            self.text_auxiliary_tari_assertion,
+            self.text_auxiliary_nari_assertion,
+            self.text_auxiliary_beshi,
+            self.text_auxiliary_mu,
+            self.text_auxiliary_ri,
+            self.text_auxiliary_keri,
+            self.text_auxiliary_maji,
+        ]
+
+    def is_nidan(self) -> bool:
+        """Check if the conjugation type is a nidan verb."""
+        return self in [
+            self.text_nidan_lower_ra,
+            self.text_nidan_lower_a,
+            self.text_nidan_lower_sa,
+            self.text_nidan_lower_da,
+        ]
+
+    def is_yondan(self) -> bool:
+        """Check if the conjugation type is a yondan verb."""
+        return self in [
+            self.text_yondan_ha,
+            self.text_yondan_sa,
+            self.text_yondan_ra,
+            self.text_yondan_ka,
+            self.text_yondan_ta,
+            self.text_yondan_ba,
+            self.text_yondan_ma,
+        ]
+
 
 class UnidicCForm(UnidicField, str, Enum):
     """Enum for the conjugation form in Unidic."""
@@ -185,9 +314,10 @@ class UnidicCForm(UnidicField, str, Enum):
     conditional_fusion = "仮定形-融合"
 
     realis_general = "已然形-一般"
+    realis_auxiliary = "已然形-補助"
 
     imperative = "命令形"
-    
+
     volitional_nominal = "意志推量形"
 
     imperfective_sa = "未然形-サ"
@@ -199,6 +329,7 @@ class UnidicCForm(UnidicField, str, Enum):
     conclusive_general = "終止形-一般"
     conclusive_nasal_t = "終止形-促音便"
     conclusive_nasal_n = "終止形-撥音便"
+    conclusive_auxiliary = "終止形-補助"
     conclusive_fusion = "終止形-融合"
 
     stem_sa = "語幹-サ"
@@ -208,57 +339,64 @@ class UnidicCForm(UnidicField, str, Enum):
     attributive_nasal_n = "連体形-撥音便"
     attributive_omission = "連体形-省略"
     attributive_auxiliary = "連体形-補助"
+    attrivutive_i = "連体形-イ音便"
 
     continuative_i = "連用形-イ音便"
     continuative_u = "連用形-ウ音便"
     continuative_ni = "連用形-ニ"
+    continuative_to = "連用形-ト"
     continuative_general = "連用形-一般"
     continuative_nasal_n = "連用形-撥音便"
     continuative_nasal_t = "連用形-促音便"
-    continuative_omit = "連用形-省略"
+    continuative_omission = "連用形-省略"
+    continuative_auxiliary = "連用形-補助"
     continuative_fusion = "連用形-融合"
 
+    ku_form = "ク語法"
+
     other = "その他"
+
 
 class UnidicGoshu(UnidicField, str, Enum):
     """Enum for the goshu field in Unidic."""
 
-    japan = "和" # Japanese origin word
-    solid = "固" # Solid compound word
-    china = "漢" # Chinese origin word
-    foreign = "外" # Foreign origin word
-    mixed = "混" # Mixed origin word
-    symbol = "記号" # Symbol
-    unknown = "不明" # Unknown origin word
+    japan = "和"  # Japanese origin word
+    solid = "固"  # Solid compound word
+    china = "漢"  # Chinese origin word
+    foreign = "外"  # Foreign origin word
+    mixed = "混"  # Mixed origin word
+    symbol = "記号"  # Symbol
+    unknown = "不明"  # Unknown origin word
     other = "その他"
+
 
 class UnidicType(UnidicField, str, Enum):
     """Enum for the type field in Unidic."""
 
-    human_counter = "体" # Not sure what this means
-    binding_particle = "係助" # Binding particle
-    support = "補助" # Support
-    country = "国" # Country
-    case_making_particle = "格助" # Case making particle
-    auxiliary = "助動" # Auxiliary
-    use = "用" # 'Use' not sure what this means
-    proper_name = "固有名" # Proper name
-    person_name = "人名" # Person name
-    place_name = "地名" # Place name
-    symbol = "記号" # Symbol
-    number = "数" # Number
-    supporter = "準助" # Supporter
-    conjunctive = "接助" # Conjunctive
-    suffix1 = "接尾用" # Suffix 1 - Need to clarify
-    suffix2 = "接尾相" # Suffix 2 - Need to clarify
-    suffix3 = "接尾体" # Suffix 3 - Need to clarify
-    assisting_particle = "副助" # Assisting particle
-    counter = "助数" # Counter
-    first_name = "名" # First name
-    family_name = "姓" # Family name
-    prefix = "接頭" # Prefix
-    ending_particle = "終助" # Ending particle
-    aspect = "相" # Aspect
+    human_counter = "体"  # Not sure what this means
+    binding_particle = "係助"  # Binding particle
+    support = "補助"  # Support
+    country = "国"  # Country
+    case_making_particle = "格助"  # Case making particle
+    auxiliary = "助動"  # Auxiliary
+    use = "用"  # 'Use' not sure what this means
+    proper_name = "固有名"  # Proper name
+    person_name = "人名"  # Person name
+    place_name = "地名"  # Place name
+    symbol = "記号"  # Symbol
+    number = "数"  # Number
+    supporter = "準助"  # Supporter
+    conjunctive = "接助"  # Conjunctive
+    suffix1 = "接尾用"  # Suffix 1 - Need to clarify
+    suffix2 = "接尾相"  # Suffix 2 - Need to clarify
+    suffix3 = "接尾体"  # Suffix 3 - Need to clarify
+    assisting_particle = "副助"  # Assisting particle
+    counter = "助数"  # Counter
+    first_name = "名"  # First name
+    family_name = "姓"  # Family name
+    prefix = "接頭"  # Prefix
+    ending_particle = "終助"  # Ending particle
+    aspect = "相"  # Aspect
     other = "他"
 
 
@@ -266,16 +404,14 @@ class UnidicGeneralString(UnidicField, str):
     """General string field for Unidic."""
 
     @classmethod
-    def __get_pydantic_core_schema__(
-        cls, source_type: Any, handler: GetCoreSchemaHandler
-    ) -> CoreSchema:
+    def __get_pydantic_core_schema__(cls, source_type: Any, handler: GetCoreSchemaHandler) -> CoreSchema:
         """Validate the field as a general string."""
         return core_schema.no_info_after_validator_function(cls, handler(str))
-    
+
 
 class UnidicFeatures29(BaseModel):
     """Conversion of named tuple to Pydantic model.
-    
+
     Attributes:
         pos1: The most general way of representing the part of speech.
         pos2: The second most general way of representing the part of speech.
@@ -306,14 +442,23 @@ class UnidicFeatures29(BaseModel):
         aModType: The accent modification type of the word.
         lid: The lexical ID of the word. Mostly unique, except for half/full width versions of the same lemma.
         lemma_id: The lemma ID of the word. Unique per lemma, but not per word.
-    
+
     Todo:
         Add stricter type checking for all remaining str fields.
     """
-    pos1: UnidicPos1 | None = Field(..., title="Part of Speech 1", description="The most general way of representing the part of speech.")
-    pos2: UnidicPos2 | None = Field(..., title="Part of Speech 2", description="The second most general way of representing the part of speech.")
-    pos3: UnidicPos3 | None = Field(..., title="Part of Speech 3", description="The third most general way of representing the part of speech.")
-    pos4: UnidicPos4 | None = Field(..., title="Part of Speech 4", description="The most specific way of representing the part of speech.")
+
+    pos1: UnidicPos1 | None = Field(
+        ..., title="Part of Speech 1", description="The most general way of representing the part of speech."
+    )
+    pos2: UnidicPos2 | None = Field(
+        ..., title="Part of Speech 2", description="The second most general way of representing the part of speech."
+    )
+    pos3: UnidicPos3 | None = Field(
+        ..., title="Part of Speech 3", description="The third most general way of representing the part of speech."
+    )
+    pos4: UnidicPos4 | None = Field(
+        ..., title="Part of Speech 4", description="The most specific way of representing the part of speech."
+    )
     cType: UnidicCType | None = Field(..., title="Conjugation Type", description="The type of conjugation.")
     cForm: UnidicCForm | None = Field(..., title="Conjugation Form", description="The form of conjugation.")
     lForm: str = Field(..., title="Lemma Form", description="The lemma form of the word.")
@@ -323,12 +468,24 @@ class UnidicFeatures29(BaseModel):
     orthBase: str = Field(..., title="Base Orthography", description="The uninflected form of the word in context.")
     pronBase: str = Field(..., title="Base Pronunciation", description="The pronunciation of orthBase.")
     goshu: UnidicGoshu | None = Field(..., title="Goshu", description="The basic etymology of the word.")
-    iType: UnidicGeneralString | None = Field(..., title="Initial Transformation", description="The type of initial transformation.")
-    iForm: UnidicGeneralString | None = Field(..., title="Initial Form", description="The initial form of the word in context.")
-    fType: UnidicGeneralString | None = Field(..., title="Final Transformation", description="The type of final transformation.")
-    fForm: UnidicGeneralString | None = Field(..., title="Final Form", description="The final form of the word in context.")
-    iConType: UnidicGeneralString | None = Field(..., title="Initial change fusion type", description="The type of initial change fusion.")
-    fConType: UnidicGeneralString | None = Field(..., title="Final change fusion type", description="The type of final change fusion.")
+    iType: UnidicGeneralString | None = Field(
+        ..., title="Initial Transformation", description="The type of initial transformation."
+    )
+    iForm: UnidicGeneralString | None = Field(
+        ..., title="Initial Form", description="The initial form of the word in context."
+    )
+    fType: UnidicGeneralString | None = Field(
+        ..., title="Final Transformation", description="The type of final transformation."
+    )
+    fForm: UnidicGeneralString | None = Field(
+        ..., title="Final Form", description="The final form of the word in context."
+    )
+    iConType: UnidicGeneralString | None = Field(
+        ..., title="Initial change fusion type", description="The type of initial change fusion."
+    )
+    fConType: UnidicGeneralString | None = Field(
+        ..., title="Final change fusion type", description="The type of final change fusion."
+    )
     type: UnidicType | None = Field(..., title="Type", description="The type of the lemma.")
     kana: str = Field(..., title="Kana", description="The katakana representation of the word.")
     kanaBase: str = Field(..., title="Base Kana", description="The katakana representation of the lemma.")
@@ -336,18 +493,26 @@ class UnidicFeatures29(BaseModel):
     formBase: str = Field(..., title="Base Form", description="The uninflected form of the word.")
     aType: str = Field(..., title="Accent Type", description="The accent type of the word.")
     aConType: str = Field(..., title="Accent change type", description="The accent change type of the word.")
-    aModType: UnidicGeneralString | None = Field(..., title="Accent modification type", description="The accent modification type of the word.")
-    lid: int = Field(..., title="Lexical ID", description="The lexical ID of the word. Mostly unique, except for half/full width versions of the same lemma.")
-    lemma_id: int = Field(..., title="Lemma ID", description="The lemma ID of the word. Unique per lemma, but not per word.")
+    aModType: UnidicGeneralString | None = Field(
+        ..., title="Accent modification type", description="The accent modification type of the word."
+    )
+    lid: int = Field(
+        ...,
+        title="Lexical ID",
+        description="The lexical ID of the word. Mostly unique, except for half/full width versions of the same lemma.",
+    )
+    lemma_id: int = Field(
+        ..., title="Lemma ID", description="The lemma ID of the word. Unique per lemma, but not per word."
+    )
 
     @classmethod
     def from_fugashi(cls, feature, analysis_dict: dict[str, set[str]] | None = None) -> Optional["UnidicFeatures29"]:
         """Convert a fugashi word object to a UnidicFeatures29 object.
-        
+
         Args:
             feature: The fugashi word object to convert.
             analysis_dict: A dictionary of analysis fields to store unknown fields in. Defaults to None.
-        
+
         Returns:
             UnidicFeatures29: The converted UnidicFeatures29 object.
         """
@@ -449,4 +614,3 @@ class UnidicFeatures29(BaseModel):
                 return cls(**cls_dict)
             except ValidationError:
                 return None
-

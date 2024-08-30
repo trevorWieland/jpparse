@@ -2,7 +2,7 @@
 
 from fugashi import Tagger
 
-from ..types import ParsedScript, RawScript, ScriptLine, ScriptMetadata, UnidicFeatures29, Vocab
+from ..types import ParsedScript, RawScript, ScriptLine, ScriptMetadata, UnidicFeatures29, Vocab, VocabType
 
 
 class ScriptParser:
@@ -10,7 +10,7 @@ class ScriptParser:
 
     def __init__(self, script: RawScript, analysis_mode: bool = False):
         """Create a ScriptParser from a RawScript object.
-        
+
         Args:
             script (RawScript): The raw script to parse.
             analysis_mode (bool): Whether to run in analysis mode. Defaults to False.
@@ -22,14 +22,13 @@ class ScriptParser:
         self.parsed_script: ParsedScript | None = None
 
         self.analysis_dict: dict[str, set[str]] | None = None if not analysis_mode else {}
-    
 
     def parse_word(self, fugashi_word) -> Vocab | None:
         """Parse a fugashi word into a Vocab object.
-        
+
         Args:
             fugashi_word: The fugashi word to parse.
-        
+
         Returns:
             Vocab: The parsed Vocab object.
         """
@@ -38,15 +37,24 @@ class ScriptParser:
         if word_features is None:
             return None
 
-        return None
+        vocab = Vocab(
+            word=word_features.orth,
+            reading=word_features.kana,
+            data=None,
+            type=VocabType.from_fugashi(word_features),
+            verb_forms=None,
+            component_kanji=[],
+            component_vocab=[],
+        )
 
+        return vocab
 
     def parse_line(self, line: str) -> ScriptLine:
         """Parse a single line into a ScriptLine object.
-        
+
         Args:
             line (str): The line to parse.
-        
+
         Returns:
             ScriptLine: The parsed line.
         """
@@ -56,16 +64,16 @@ class ScriptParser:
         vocab_breakdown = [vocab for vocab in vocab_breakdown if vocab is not None]
 
         return ScriptLine(text=line, vocab_breakdown=vocab_breakdown)
-    
+
     def parse(self) -> ParsedScript:
         """Parse the entire script into a list of ScriptLine objects.
-        
+
         Returns:
             ParsedScript: The parsed script.
         """
         if self.parsed_script is not None:
             return self.parsed_script
-        
+
         self.parsed_script = ParsedScript(
             metadata=self.metadata,
             lines=[self.parse_line(line) for line in self.raw_lines],
@@ -73,16 +81,15 @@ class ScriptParser:
 
         return self.parsed_script
 
-
     @classmethod
     def from_metadata(cls, metadata: ScriptMetadata, script_folder: str, analysis_mode: bool = False) -> "ScriptParser":
         """Create a ScriptParser from metadata and a script folder.
-        
+
         Args:
             metadata (ScriptMetadata): The metadata for the script.
             script_folder (str): The folder containing the script.
             analysis_mode (bool): Whether to run in analysis mode. Defaults to False.
-        
+
         Returns:
             ScriptParser: The created ScriptParser object.
         """
@@ -92,4 +99,3 @@ class ScriptParser:
         raw_script = RawScript(metadata=metadata, script=script)
 
         return cls(raw_script, analysis_mode=analysis_mode)
-        

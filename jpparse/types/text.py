@@ -5,7 +5,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from .fugashi_wrap import UnidicFeatures29, UnidicPos1, UnidicPos2
+from .fugashi_wrap import UnidicFeatures29, UnidicPos1, UnidicCForm
 
 
 class VocabType(str, Enum):
@@ -19,22 +19,33 @@ class VocabType(str, Enum):
     na_adjective = "na_adjective"
     adverb = "adverb"
     particle = "particle"
-    name = "name"
+    pronoun = "pronoun"
     other = "other"
 
     def from_fugashi(features: UnidicFeatures29) -> "VocabType":
         """Assign a VocabType based on the features of a word."""
         if features.pos1 == UnidicPos1.noun:
             return VocabType.noun
-        if features.pos1 == UnidicPos1.verb:
-            if features.pos2 == UnidicPos2.irregular_verb:
-                return VocabType.irregular_verb
-            if features.pos2 == UnidicPos2.common_noun:
-                return VocabType.godan_verb
-            return VocabType.ichidan_verb
+        if features.pos1 == UnidicPos1.na_adjective:
+            return VocabType.na_adjective
+        if features.pos1 == UnidicPos1.i_adjective:
+            return VocabType.i_adjective
+        if features.pos1 == UnidicPos1.adverb:
+            return VocabType.adverb
         if features.pos1 == UnidicPos1.particle:
             return VocabType.particle
+        if features.pos1 == UnidicPos1.pronoun:
+            return VocabType.pronoun
 
+        if features.pos1 == UnidicPos1.verb:
+            if features.cType.is_godan():
+                return VocabType.godan_verb
+            if features.cType.is_ichidan():
+                return VocabType.ichidan_verb
+            if features.cType.is_irregular():
+                return VocabType.irregular_verb
+
+        return VocabType.other
 
 
 class VerbForm(str, Enum):
@@ -57,6 +68,9 @@ class VerbForm(str, Enum):
     tara = "tara"
     tai = "tai"
     naide = "naide"
+
+    def from_fugashi(features: UnidicFeatures29) -> "VerbForm":
+        """Assign a VerbForm based on the features of a word."""
 
 
 class KanjiData(BaseModel):

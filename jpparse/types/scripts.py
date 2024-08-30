@@ -68,7 +68,7 @@ class ScriptIndex(BaseModel):
                 "vndb_id": 10016,
                 "vndb_release_id": None,
             }
-        ]
+        ],
     )
 
 
